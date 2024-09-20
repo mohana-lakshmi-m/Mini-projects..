@@ -1,0 +1,56 @@
+import random
+import string
+import time
+
+def generate_otp(length=6):
+    """
+    Generate a random OTP of specified length.
+
+    Args:
+        length (int): Length of the OTP. Defaults to 6.
+
+    Returns:
+        str: The generated OTP.
+    """
+    digits = string.digits
+    otp = ''.join(random.choice(digits) for _ in range(length))
+    return otp
+
+def send_otp(otp, phone_number):
+    """
+    Simulate sending the OTP to the user's phone.
+
+    Args:
+        otp (str): The generated OTP.
+        phone_number (str): The user's phone number.
+    """
+    print(f"OTP sent to {phone_number}: {otp}")
+
+def verify_otp(otp, user_input):
+    """
+    Verify the OTP entered by the user.
+
+    Args:
+        otp (str): The generated OTP.
+        user_input (str): The OTP entered by the user.
+
+    Returns:
+        bool: True if the OTP is valid, False otherwise.
+    """
+    return otp == user_input
+
+def main():
+    phone_number = input("Enter your phone number: ")
+    otp = generate_otp()
+    send_otp(otp, phone_number)
+    
+    user_input = input("Enter the OTP: ")
+    if verify_otp(otp, user_input):
+        print("OTP verified successfully!")
+    else:
+        print("Invalid OTP. Please try again.")
+
+if __name__ == "__main__":
+    main()
+
+.
